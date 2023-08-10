@@ -4,11 +4,12 @@ import 'package:get/get.dart';
 import 'core/constant/Pages.dart';
 import 'core/resources/manager_colors.dart';
 import 'core/resources/manager_routes.dart';
+import 'core/storage/local/database/databaseprovider.dart';
+import 'core/storage/local/database/initdatabase.dart';
 import 'view/welcome page/splash/splash.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
+  initdatabase() ;
   runApp(MyApp());
 }
 

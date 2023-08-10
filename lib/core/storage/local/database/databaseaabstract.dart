@@ -1,9 +1,9 @@
 abstract class databaseabstract<T>{
 
   Future <int> create(T obj);
-  Future<List<T>> read();
+  Future<List<T>> readd();
   Future<bool> update();
-  Future<T?>show(int id);
+  Future<T?>showw(int id);
   Future<bool> delete(int id);
 
 
