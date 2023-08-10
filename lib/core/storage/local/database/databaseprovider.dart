@@ -1,62 +1,76 @@
-import 'dart:io';
-
-import 'package:flutter/widgets.dart';
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart';
 
-import '../../../constant/public.dart';
+class SqlDb {
+  static Database? _db;
 
-class databaseprovider{
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  static final databaseprovider _instance= databaseprovider._instance;
-  databaseprovider._init();
-  late Database  _data;
-  factory databaseprovider(){
-    return _instance;
+  Future<Database?> get db async {
+    if (_db == null) {
+      _db = await intialDb();
+      return _db;
+    } else {
+      print(" hala =====================================");
+      return _db;
+    }
   }
-  Database get  data=>_data;
 
-
-  Future<void> init() async{
-    Directory   direction = await getApplicationDocumentsDirectory();
-    String path = join(direction.path, ManagerConstants.databaseName);
-    _data = await openDatabase(path, version: ManagerConstants.version,
-     onCreate: (data,version){
-      data.execute('''
-      CREATE TABLE  ${ManagerConstants.tableName}(
-        ${ManagerConstants.id} INTEGER PRIMARY KEY AUTOINCREMENT,
-        ${ManagerConstants.tital} TEXT NOT NULL,
-        ${ManagerConstants.body} TEXT ,
-      )
-      ''');
-    },
-    onOpen: (data){},
-      onUpgrade: (data,oldversion,newversion){
-      data.execute('''
-      DROP TABLE IF EXISTS ${ManagerConstants.tableName}
-      ''');
-      },
-
-    );
+  intialDb() async {
+    String databasepath = await getDatabasesPath();
+    String path = join(databasepath, 'wael.db');
+    Database mydb = await openDatabase(path,
+        onCreate: _onCreate, version: 5, onUpgrade: _onUpgrade);
+    return mydb;
   }
+
+  _onUpgrade(Database db, int oldversion, int newversion) async {
+    await db.execute("ALERT TABLE notes ADD COLUMN Color TEXT");
+    print("onUpgrade =====================================");
+  }
+
+  _onCreate(Database db, int version) async {
+    await db.execute('''
+ CREATE TABLE "notes" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "note" TEXT NOT NULL,
+    "title" TEXT NOT NULL
+                );
+
+  )
+ ''');
+    print(" onCreate =====================================");
+  }
+
+  readData(String sql) async {
+    Database? mydb = await db;
+    List<Map> response = await mydb!.rawQuery(sql);
+    return response;
+  }
+
+  insertData(String sql) async {
+    Database? mydb = await db;
+    int response = await mydb!.rawInsert(sql);
+    return response;
+  }
+
+  updateData(String sql) async {
+    Database? mydb = await db;
+    int response = await mydb!.rawUpdate(sql);
+    return response;
+  }
+
+  deleteData(String sql) async {
+    Database? mydb = await db;
+    int response = await mydb!.rawDelete(sql);
+    return response;
+  }
+
+  delete() async {
+    String databasepath = await getDatabasesPath();
+    String path = join(databasepath, 'wael.db');
+    await deleteDatabase(path);
+  }
+// SELECT
+// DELETE
+// UPDATE
+// INSERT
 }

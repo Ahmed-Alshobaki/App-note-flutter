@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:note/view/welcome%20page/Home/Home.dart';
 
 import 'core/constant/Pages.dart';
 import 'core/resources/manager_colors.dart';
@@ -9,7 +10,7 @@ import 'core/storage/local/database/initdatabase.dart';
 import 'view/welcome page/splash/splash.dart';
 
 void main() async {
-  initdatabase() ;
+
   runApp(MyApp());
 }
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: ManagerRoutes.splash,
+     // initialRoute: ManagerRoutes.splash,
       locale: Get.deviceLocale,
       theme: ThemeData(
           colorScheme:
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
               ))),
       debugShowCheckedModeBanner: false,
       getPages: Pages.Page,
-
+        home:Home(),
     );
   }
 }
