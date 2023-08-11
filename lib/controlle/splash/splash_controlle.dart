@@ -10,7 +10,7 @@ class SplashControlle extends GetxController{
 
   void change()async{
     Future.delayed(const Duration(seconds: ManagerTime.s3),()async{
-      await Get.offNamed(ManagerRoutes.home);
+      await Get.offNamed(ManagerRoutes.Login);
     });
 
   }

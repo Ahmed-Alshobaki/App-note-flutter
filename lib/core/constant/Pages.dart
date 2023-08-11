@@ -2,6 +2,9 @@ import 'package:get/get.dart';
 
 
 import '../../view/add/addnote.dart';
+import '../../view/auth/Login.dart';
+
+import '../../view/auth/singup.dart';
 import '../../view/welcome page/Home/Home.dart';
 import '../../view/welcome page/Home/HomeVeiw.dart';
 import '../../view/welcome page/splash/splash.dart';
@@ -15,6 +18,8 @@ class Pages {
      GetPage(name: ManagerRoutes.home, page: () => Home()),
      GetPage(name: ManagerRoutes.Addnotes, page: () => Addnotes()),
      GetPage(name: ManagerRoutes.View, page: () => View()),
+     GetPage(name: ManagerRoutes.Login, page: () => Login()),
+     GetPage(name: ManagerRoutes.Singup, page: () => Singup()),
 
   ];
 
