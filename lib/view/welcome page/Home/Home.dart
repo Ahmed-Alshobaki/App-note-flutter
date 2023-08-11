@@ -74,6 +74,7 @@ class Home extends StatelessWidget {
                                               subtitle: Text(co.z[i]["note"]),
                                               trailing: IconButton(onPressed: () {
                                                 co.delete_add("${co.z[i]["id"]}");
+
                                                 co.readdata(co.z);
                                                 co.onInit();
                                               },

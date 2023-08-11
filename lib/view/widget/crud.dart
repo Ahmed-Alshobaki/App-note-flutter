@@ -22,7 +22,7 @@ class Card1 {
     try{
       var request = await http.post(Uri.parse(url), body:data);
       if (request.statusCode==200){
-        var requestbody  = jsonEncode(request.body);
+        var requestbody  = jsonDecode(request.body);
         return requestbody;
       }else{
         print(request.statusCode);

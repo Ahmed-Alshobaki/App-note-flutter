@@ -16,6 +16,7 @@ class home extends GetxController {
       int index = db.deleteData("DELETE FROM notes WHERE  id = ${s} ");
       z.removeWhere((element) => element ["id"] == "${s}" );
       update();
+
     }
 
    readdata(List z) async {
