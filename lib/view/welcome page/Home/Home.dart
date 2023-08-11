@@ -63,6 +63,13 @@ class Home extends StatelessWidget {
                                           init: home(),
                                           builder: ( controller) {
                                             return  ListTile(
+                                              onTap: (){
+                                                print(i);
+                                                Get.toNamed(ManagerRoutes.View,parameters: {
+                                                  "title":co.z[i]["title"],
+                                                  "note":co.z[i]["note"],
+                                                } );
+                                              },
                                               title: Text(co.z[i]["title"]),
                                               subtitle: Text(co.z[i]["note"]),
                                               trailing: IconButton(onPressed: () {
