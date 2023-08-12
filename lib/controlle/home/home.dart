@@ -6,37 +6,37 @@ import 'package:note/core/storage/local/database/databaseprovider.dart';
 import '../../core/resources/manager_routes.dart';
 
 class home extends GetxController {
-  List z =  [];
+  List z = [];
   SqlDb db = new SqlDb();
 
-  void goto_addnot(){
+  void goto_addnot() {
     Get.offNamed(ManagerRoutes.Addnotes);
   }
-    void delete_add (String s){
-      int index = db.deleteData("DELETE FROM notes WHERE  id = ${s} ");
-      z.removeWhere((element) => element ["id"] == "${s}" );
-      update();
 
-    }
-
-   readdata(List z) async {
-  List<Map> read = await db.readData("SELECT * FROM notes");
-   z.clear();
-    z.addAll(read.toList());
-      update();
-    }
-@override
-  void onInit() {
-  readdata(z);
-  update();
-  print("onInit");
-    super.onInit();
-
+  void delete_add(String s) async {
+    int index = await db.deleteData("DELETE FROM notes WHERE  id = ${s} ");
+    z.removeWhere((element) => element["id"] == "${s}");
+    update();
   }
+
+  readdata(List z) async {
+    List<Map> read = await db.readData("SELECT * FROM notes");
+    z.clear();
+    z.addAll(read.toList());
+    update();
+  }
+
+  @override
+  void onInit() {
+    readdata(z);
+    update();
+    print("onInit");
+    super.onInit();
+  }
+
   @override
   void onReady() {
     print("onReady");
     super.onReady();
   }
-
 }

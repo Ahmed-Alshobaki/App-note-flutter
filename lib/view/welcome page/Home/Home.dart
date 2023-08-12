@@ -13,9 +13,6 @@ class Home extends StatelessWidget {
   SqlDb db = SqlDb();
   home co = Get.put(home());
 
-
-
-
   @override
   Widget build(BuildContext context) {
     co.onInit();
@@ -33,72 +30,68 @@ class Home extends StatelessWidget {
         body: GetBuilder<home>(
           init: home(),
           builder: (GetxController controller) {
-      return  Container(
-              margin:
-              EdgeInsetsDirectional.symmetric(vertical: 5),
-              child: ListView(
-                children: [
-                  MaterialButton(onPressed: () async {
-                    // print( await readdata());
-                    db.delete();
-                  }),
-                  GetBuilder<home>(
-
-                    builder: (controller) {
-                      return ListView.builder(
-                          physics: NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: co.z.length,
-                          itemBuilder: (context, i) {
-                            return Card(
-                                margin:
-                                EdgeInsetsDirectional.symmetric(vertical: 5),
-                                child: GetBuilder<home>(
-                                  init: home(),
-                                  builder: (controller) {
-                                    return GetBuilder<home>(
-                                      init: home(),
-                                      builder: (controller) {
-                                        return GetBuilder<home>(
-                                          init: home(),
-                                          builder: ( controller) {
-                                            return  ListTile(
-                                              onTap: (){
-                                                print(i);
-                                                Get.toNamed(ManagerRoutes.View,parameters: {
-                                                  "title":co.z[i]["title"],
-                                                  "note":co.z[i]["note"],
-                                                } );
-                                              },
-                                              title: Text(co.z[i]["title"]),
-                                              subtitle: Text(co.z[i]["note"]),
-                                              trailing: IconButton(onPressed: () {
-                                                co.delete_add("${co.z[i]["id"]}");
+            return ListView(
+              children: [
+                MaterialButton(onPressed: () async {
+                  // print( await readdata());
+                  db.delete();
+                }),
+                GetBuilder<home>(
+                  builder: (controller) {
+                    return ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: co.z.length,
+                        itemBuilder: (context, i) {
+                          return Card(
+                              margin:
+                                  EdgeInsetsDirectional.symmetric(vertical: 5),
+                              child: GetBuilder<home>(
+                                init: home(),
+                                builder: (controller) {
+                                  return GetBuilder<home>(
+                                    init: home(),
+                                    builder: (controller) {
+                                      return GetBuilder<home>(
+                                        init: home(),
+                                        builder: (controller) {
+                                          return ListTile(
+                                            onTap: () {
+                                              print(i);
+                                              Get.toNamed(ManagerRoutes.View,
+                                                  parameters: {
+                                                    "title": co.z[i]["title"],
+                                                    "note": co.z[i]["note"],
+                                                  });
+                                            },
+                                            title: Text(co.z[i]["title"]),
+                                            subtitle: Text(co.z[i]["note"]),
+                                            trailing: IconButton(
+                                              onPressed: () {
+                                                co.delete_add(
+                                                    "${co.z[i]["id"]}");
 
                                                 co.readdata(co.z);
                                                 co.onInit();
                                               },
-                                                icon: Icon(Icons.delete,
-                                                  color: Colors.red,),),
-                                            );
-                                          },
-
-                                        );
-                                      },
-                                    );
-                                  },)
-                            );
-                          });
-                    },)
-
-
-                ],
-              ),
+                                              icon: Icon(
+                                                Icons.delete,
+                                                color: Colors.red,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
+                                  );
+                                },
+                              ));
+                        });
+                  },
+                )
+              ],
             );
-
           },
-        )
-
-    );
+        ));
   }
 }

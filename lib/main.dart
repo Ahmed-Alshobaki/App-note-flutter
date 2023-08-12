@@ -11,7 +11,6 @@ import 'core/storage/local/database/initdatabase.dart';
 import 'view/welcome page/splash/splash.dart';
 
 void main() async {
-
   runApp(MyApp());
 }
 
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-   // initialRoute: ManagerRoutes.splash,
+      // initialRoute: ManagerRoutes.splash,
       locale: Get.deviceLocale,
       theme: ThemeData(
           colorScheme:
@@ -35,7 +34,7 @@ class MyApp extends StatelessWidget {
               ))),
       debugShowCheckedModeBanner: false,
       getPages: Pages.Page,
-       home:Singup(),
+      home: Home(),
     );
   }
 }
