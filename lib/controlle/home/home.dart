@@ -9,7 +9,7 @@ import 'package:note/view/widget/crud.dart';
 
 import '../../core/resources/manager_routes.dart';
 
-class home extends GetxController {
+class home1 extends GetxController {
   List z = [];
   SqlDb db = new SqlDb();
   Card1 card = new Card1();
@@ -35,14 +35,6 @@ class home extends GetxController {
     z.clear();
     z.addAll(read.toList());
     update();
-  }
-
-  @override
-  void onInit() {
-    readdata(z);
-    update();
-    print("onInit");
-    super.onInit();
   }
 
   @override

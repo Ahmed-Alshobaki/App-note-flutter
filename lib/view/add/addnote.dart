@@ -10,7 +10,7 @@ import '../../controlle/home/home.dart';
 class Addnotes extends StatelessWidget {
   Addnotes({super.key});
   addcontrolle controlle = Get.put(addcontrolle());
-  home homecontrolle = Get.put(home());
+  home1 homecontrolle = Get.put(home1());
   SqlDb db = SqlDb();
   @override
   Widget build(BuildContext context) {

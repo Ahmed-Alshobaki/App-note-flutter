@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:note/controlle/services/servise.dart';
-import 'package:note/view/auth/Login.dart';
-import 'package:note/view/auth/singup.dart';
 import 'package:note/view/welcome%20page/Home/Home.dart';
-
 import 'core/constant/Pages.dart';
 import 'core/resources/manager_colors.dart';
-import 'core/resources/manager_routes.dart';
-import 'core/storage/local/database/databaseprovider.dart';
-import 'core/storage/local/database/initdatabase.dart';
-import 'view/welcome page/splash/splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // WidgetsBinding.instance.addPostFrameCallback((_)=>yo)
   await Sharedzon().oninit();
 
   runApp(MyApp());

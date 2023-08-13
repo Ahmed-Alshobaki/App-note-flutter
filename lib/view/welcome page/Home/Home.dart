@@ -11,12 +11,11 @@ class Home extends StatelessWidget {
   Home({super.key});
 
   SqlDb db = SqlDb();
-  home co = Get.put(home());
+  home1 co = Get.put(home1());
   Sharedzon sharedzon = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    co.onInit();
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -28,8 +27,8 @@ class Home extends StatelessWidget {
           backgroundColor: Colors.black87,
           title: Text("Notes"),
         ),
-        body: GetBuilder<home>(
-          init: home(),
+        body: GetBuilder<home1>(
+          init: home1(),
           builder: (GetxController controller) {
             return FutureBuilder(
                 future: co.getdataview(),
