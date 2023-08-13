@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:note/view/widget/validator.dart';
 
 import '../../controlle/singup/SingupController.dart';
 import '../../core/resources/manager_routes.dart';
@@ -18,7 +20,7 @@ class Singup extends StatelessWidget {
         ),
         body: GetBuilder<SingupController>(
           builder: (controller) {
-            return controller.isloding
+            return singupcontroller.isloding
                 ? Center(
                     child: CircularProgressIndicator(
                       valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
@@ -29,7 +31,7 @@ class Singup extends StatelessWidget {
                       Container(
                         margin: EdgeInsetsDirectional.symmetric(horizontal: 15),
                         child: Form(
-                            key: controller.key,
+                            key: singupcontroller.key1,
                             child: Column(
                               children: [
                                 SizedBox(
@@ -44,31 +46,40 @@ class Singup extends StatelessWidget {
                                   height: 80,
                                 ),
                                 TextFormFieldcustom(
+                                  controller: singupcontroller.username,
+                                  validator1: (val) {
+                                    return validatorr(val!, 5, "username");
+                                  },
                                   tital: 'username',
                                   hint: 'Enter your email username',
                                   Iconn: Icon(Icons.person),
                                   obscureText: false,
-                                  controller: controller.username,
                                 ),
                                 SizedBox(
                                   height: 30,
                                 ),
                                 TextFormFieldcustom(
+                                  controller: singupcontroller.email,
+                                  validator1: (val) {
+                                    return validatorr(val!, 255, "Email");
+                                  },
                                   tital: 'Email',
                                   hint: 'Enter your email address',
                                   Iconn: Icon(Icons.email),
                                   obscureText: false,
-                                  controller: controller.email,
                                 ),
                                 SizedBox(
                                   height: 30,
                                 ),
                                 TextFormFieldcustom(
+                                  controller: singupcontroller.password,
+                                  validator1: (val) {
+                                    return validatorr(val!, 5, "password");
+                                  },
                                   tital: 'password',
                                   hint: 'Enter your password address',
                                   Iconn: Icon(Icons.password),
                                   obscureText: false,
-                                  controller: controller.password,
                                 )
                               ],
                             )),
@@ -78,7 +89,7 @@ class Singup extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () async {
-                          await controller.singup();
+                          await singupcontroller.singup();
                         },
                         child: Text(
                           "sing up",

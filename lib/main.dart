@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:note/controlle/services/servise.dart';
+import 'package:note/view/auth/Login.dart';
 import 'package:note/view/auth/singup.dart';
 import 'package:note/view/welcome%20page/Home/Home.dart';
 
@@ -11,16 +13,22 @@ import 'core/storage/local/database/initdatabase.dart';
 import 'view/welcome page/splash/splash.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Sharedzon().oninit();
+
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  Sharedzon sharedd = Get.find();
   MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      // initialRoute: ManagerRoutes.splash,
+      // initialRoute: sharedd.sharedPreferences.getString("id") == null
+      //   ? ManagerRoutes.splash
+      //   : ManagerRoutes.Login,
       locale: Get.deviceLocale,
       theme: ThemeData(
           colorScheme:

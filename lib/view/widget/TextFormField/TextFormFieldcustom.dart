@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 import '../../../core/resources/manager_colors.dart';
 import '../../../core/resources/manager_font_sizes.dart';
 import '../../../core/resources/manager_strings.dart';
@@ -13,17 +12,15 @@ class TextFormFieldcustom extends StatelessWidget {
   Widget Iconn;
   bool obscureText;
   TextEditingController? controller;
-
-
+  String? Function(String?) validator1;
 
   TextFormFieldcustom(
       {required this.tital,
       required this.hint,
       required this.Iconn,
       required this.obscureText,
-
-      required this.controller
-      });
+      required this.validator1,
+      required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +28,7 @@ class TextFormFieldcustom extends StatelessWidget {
     // String lang1 = Translationsz1.getlanguage(Get.deviceLocale!.languageCode);
     return TextFormField(
       controller: controller,
-
+      validator: validator1,
       obscureText: obscureText,
       decoration: InputDecoration(
           hintText: hint.tr,

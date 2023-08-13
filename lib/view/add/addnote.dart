@@ -53,12 +53,7 @@ class Addnotes extends StatelessWidget {
                         style: TextButton.styleFrom(
                             backgroundColor: Colors.black87),
                         onPressed: () async {
-                          int number = await db.insertData(
-                              "INSERT INTO notes (note, title) VALUES ('${controlle.addnote.text}', '${controlle.addtitle.text}')");
-                          if (number > 0) {
-                            Get.offNamed(ManagerRoutes.home);
-                            homecontrolle.readdata(homecontrolle.z);
-                          }
+                          await controlle.getinsert();
                         },
                         child: Text(
                           "addnote",
