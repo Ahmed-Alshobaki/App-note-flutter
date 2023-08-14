@@ -21,6 +21,7 @@ class LoginController extends GetxController {
 
       if (data['success'] == true) {
         shader.sharedPreferences.setString("id", data['data']['id'].toString());
+        print(data['data']['id'].toString());
         Get.offNamed(ManagerRoutes.home);
         print(data['message']); // نجاح تسجيل الدخول
       } else {

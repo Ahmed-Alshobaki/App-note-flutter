@@ -17,6 +17,7 @@ class home1 extends GetxController {
   getdataview() async {
     var data = await card.postRequest(ManagerConstant.linkview,
         {"id": sharedzon.sharedPreferences.getString("id")});
+    print(data);
     return data;
   }
 

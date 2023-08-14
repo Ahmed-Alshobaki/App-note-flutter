@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
                       );
                     }
                     return ListView.builder(
-                        itemCount: snapshot.data["data"].length,
+                        itemCount: snapshot.data['data'].length,
                         itemBuilder: (context, i) {
                           return Card(
                             child: ListTile(
