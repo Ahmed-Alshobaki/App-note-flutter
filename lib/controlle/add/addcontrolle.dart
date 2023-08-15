@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:note/controlle/services/servise.dart';
@@ -11,13 +13,15 @@ class addcontrolle extends GetxController {
   TextEditingController addtitle = TextEditingController();
   Card1 control = new Card1();
   Sharedzon shared = Get.find();
+  File? myfila;
 
   getinsert() async {
-    var data = await control.postRequest(ManagerConstant.linkinsert, {
+      if(myfila==null)return Text("no");
+    var data = await control.postRequestFile(ManagerConstant.linkinsert, {
       "title": addtitle.text,
       "body": addnote.text,
       "iduser": shared.sharedPreferences.get("id"),
-    });
+    },myfila!);
 
     if (data['success'] == true) {
       Get.toNamed(ManagerRoutes.home);

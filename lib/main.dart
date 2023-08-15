@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:note/controlle/services/servise.dart';
 import 'package:note/core/resources/manager_routes.dart';
+import 'package:note/view/auth/Login.dart';
 import 'package:note/view/welcome%20page/Home/Home.dart';
 import 'core/constant/Pages.dart';
 import 'core/resources/manager_colors.dart';
+import 'view/add/addnote.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,9 +23,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: sharedd.sharedPreferences.getString("id") == null
-       ? ManagerRoutes.splash
-         : ManagerRoutes.Login,
+      //initialRoute: sharedd.sharedPreferences.getString("id") == null
+      //   ? ManagerRoutes.splash
+      //    : ManagerRoutes.Login,
       locale: Get.deviceLocale,
       theme: ThemeData(
           colorScheme:
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
               ))),
       debugShowCheckedModeBanner: false,
       getPages: Pages.Page,
-    //  home: Home(),
+      home: Home(),
     );
   }
 }

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:note/controlle/services/servise.dart';
+import 'package:note/core/resources/ManagerConstant.dart';
 import 'package:note/core/resources/manager_routes.dart';
 
 import '../../../controlle/home/home.dart';
 import '../../../core/storage/local/database/databaseprovider.dart';
+import '../../../core/storage/local/model/note.dart';
 
 class Home extends StatelessWidget {
   Home({super.key});
@@ -44,7 +46,8 @@ class Home extends StatelessWidget {
                         itemBuilder: (context, i) {
                           return Card(
                             child: ListTile(
-                              leading: Icon(Icons.note),
+                              leading: Image.network(
+                                  "${ManagerConstant.linkImage}/${snapshot.data['data'][i]['noteimage']}"),
                               title:
                                   Text("${snapshot.data['data'][i]['title']}"),
                               subtitle:
@@ -52,9 +55,18 @@ class Home extends StatelessWidget {
                               trailing: IconButton(
                                 icon: Icon(Icons.edit),
                                 onPressed: () {
-                                  Get.toNamed(ManagerRoutes.Addnotes,
+                                  print(
+                                      "${snapshot.data['data'][i]}++++++++++++++++++++++++++++++++++++++++++");
+                                  Get.toNamed(ManagerRoutes.editnotes,
                                       parameters: {
-                                        "index": "${snapshot.data['data'][i]}"
+                                        "title":
+                                            "${snapshot.data['data'][i]['title']}",
+                                        "body":
+                                            "${snapshot.data['data'][i]['body']}",
+                                        "id":
+                                            "${snapshot.data['data'][i]['id']}",
+                                        "image":
+                                            "${snapshot.data['data'][i]['noteimage']}",
                                       });
                                 },
                               ),
