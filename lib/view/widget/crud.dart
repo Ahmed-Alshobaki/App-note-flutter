@@ -3,11 +3,21 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:path/path.dart';
+import 'dart:convert';
+import 'dart:io';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+String _basicAuth = 'Basic ' + base64Encode(utf8.encode('zon:zon11'));
+
+Map<String, String> myheaders = {'authorization': _basicAuth};
 
 class Card1 {
   getRequest(String url) async {
     try {
-      var request = await http.get(Uri.parse(url));
+      var request = await http.get(
+        Uri.parse(url),
+      );
       if (request.statusCode == 200) {
         var requestbody = jsonEncode(request.body);
         return requestbody;
@@ -21,7 +31,8 @@ class Card1 {
 
   postRequest(String url, Map data) async {
     try {
-      var request = await http.post(Uri.parse(url), body: data);
+      var request =
+          await http.post(Uri.parse(url), body: data, headers: myheaders);
       if (request.statusCode == 200) {
         var requestbody = jsonDecode(request.body);
         return requestbody;
@@ -40,6 +51,7 @@ class Card1 {
       var strem = http.ByteStream(file.openRead());
       var MultipartFile = http.MultipartFile("file", strem, length,
           filename: basename(file.path));
+      request.headers.addAll(myheaders);
       request.files.add(MultipartFile);
       data.forEach((key, value) {
         request.fields[key] = value;
