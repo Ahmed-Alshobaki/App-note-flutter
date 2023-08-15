@@ -68,6 +68,7 @@ class Home extends StatelessWidget {
                                         "image":
                                             "${snapshot.data['data'][i]['noteimage']}",
                                       });
+                                  //
                                 },
                               ),
                             ),
