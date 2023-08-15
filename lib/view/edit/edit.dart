@@ -12,10 +12,13 @@ class editnotes extends StatelessWidget {
   editnotes({super.key});
   edit1 controlle = Get.put(edit1());
   SqlDb db = SqlDb();
+  Map<String, dynamic> data = Get.parameters;
 
   //final index = int.parse(paramss['index'] ?? '0');
   @override
   Widget build(BuildContext context) {
+    controlle.GET(data);
+    //print("${data['index']}ssssssssssssssssssssssssssssssssssssssssss");
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black87,

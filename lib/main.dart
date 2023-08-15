@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: sharedd.sharedPreferences.getString("id") == null
-       ? ManagerRoutes.splash
-         : ManagerRoutes.Login,
+      // initialRoute: sharedd.sharedPreferences.getString("id") == null
+      //   ? ManagerRoutes.splash
+      //  : ManagerRoutes.Login,
       locale: Get.deviceLocale,
       theme: ThemeData(
           colorScheme:
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
               ))),
       debugShowCheckedModeBanner: false,
       getPages: Pages.Page,
-    //  home: Home(),
+      home: Home(),
     );
   }
 }

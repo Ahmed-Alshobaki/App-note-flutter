@@ -9,15 +9,17 @@ class edit1 extends GetxController {
   TextEditingController addnote = TextEditingController();
   TextEditingController addtitle = TextEditingController();
   Card1 control = new Card1();
-  Map<String, String?> data = Get.parameters;
-  getupdate(String id) async {
-    var data = await control.postRequest(ManagerConstant.linkupdate, {
-      "title": addtitle.text,
-      "body": addnote.text,
-      "id": id,
-    });
-    if (data['success'] == true) {
-      Get.toNamed(ManagerRoutes.home);
-    }
+
+  GET(Map<String, dynamic> data) {
+    print("${data['body']}+++++++++zon");
+    addnote.text = data['body'];
+    addtitle.text = data['title'];
+  }
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+
+    super.onInit();
   }
 }

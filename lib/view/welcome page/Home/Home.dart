@@ -52,9 +52,14 @@ class Home extends StatelessWidget {
                               trailing: IconButton(
                                 icon: Icon(Icons.edit),
                                 onPressed: () {
-                                  Get.toNamed(ManagerRoutes.Addnotes,
+                                  print(
+                                      "${snapshot.data['data'][i]}++++++++++++++++++++++++++++++++++++++++++");
+                                  Get.toNamed(ManagerRoutes.editnotes,
                                       parameters: {
-                                        "index": "${snapshot.data['data'][i]}"
+                                        "title":
+                                            "${snapshot.data['data'][i]['title']}",
+                                        "body":
+                                            "${snapshot.data['data'][i]['body']}",
                                       });
                                 },
                               ),
